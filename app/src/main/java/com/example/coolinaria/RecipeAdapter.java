@@ -1,10 +1,13 @@
 package com.example.coolinaria;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,10 +16,12 @@ import java.util.ArrayList;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
     ArrayList<RecipeItem> recipeItems;
+    Context context;
 
 
-    public RecipeAdapter(ArrayList<RecipeItem> recipeItems){
+    public RecipeAdapter(ArrayList<RecipeItem> recipeItems, Context context){
         this.recipeItems = recipeItems;
+        this.context = context;
     }
 
 
@@ -44,7 +49,8 @@ return recipeViewHolder;
         return recipeItems.size();
     }
 
-    public static class RecipeViewHolder extends  RecyclerView.ViewHolder{
+    class RecipeViewHolder extends  RecyclerView.ViewHolder implements
+            View.OnClickListener {
 
         public ImageView recipeImageView;
         public TextView title;
@@ -53,10 +59,28 @@ return recipeViewHolder;
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
 
             recipeImageView = itemView.findViewById(R.id.recipeImageView);
             title = itemView.findViewById(R.id.titleTextView);
             description = itemView.findViewById(R.id.descriptionTextView);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+
+            int position = getAdapterPosition();
+            RecipeItem recipeItem = recipeItems.get(position);
+
+
+
+            Intent intent = new Intent(context, RecipeActivity.class);
+            intent.putExtra("imageResorse",recipeItem.getImageResource());
+            intent.putExtra("title",recipeItem.getTitle());
+            intent.putExtra("description",recipeItem.getDescription());
+            intent.putExtra("recipe",recipeItem.getRecipe());
+            context.startActivity(intent);
         }
     }
 
