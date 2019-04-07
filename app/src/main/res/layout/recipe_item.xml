@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:layout_margin="4dp">
+
+    <RelativeLayout
+        android:layout_width="379dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/recipeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="284dp"
+            android:padding="4dp"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="368dp"
+            android:layout_height="49dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-379dp"
+            android:layout_marginLeft="-379dp"
+            android:layout_marginTop="292dp"
+            android:layout_toEndOf="@+id/recipeImageView"
+            android:layout_toRightOf="@+id/recipeImageView"
+            android:text="Title"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="333dp"
+            android:layout_height="358dp"
+            android:layout_below="@id/titleTextView"
+            android:layout_marginStart="-371dp"
+            android:layout_marginLeft="-371dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/recipeImageView"
+            android:layout_toRightOf="@+id/recipeImageView"
+            android:text="Description"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
